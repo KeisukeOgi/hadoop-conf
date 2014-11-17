@@ -39,7 +39,7 @@
   </property>
 
   <property>
-    <name>dfs.datanode.fsdataset.volume.choosing.policy</name>
+    <pname>dfs.datanode.fsdataset.volume.choosing.policy</name>
     <value>org.apache.hadoop.hdfs.server.datanode.fsdataset.AvailableSpaceVolumeChoosingPolicy</value>
   </property>
 
@@ -70,25 +70,25 @@
 
   <property>
     <name>dfs.namenode.rpc-address.mycluster.nn1</name>
-    <value>kogiwara-nn1001.grid.ssk.ynwm.yahoo.co.jp:8020</value>
+    <value>nn1-host:8020</value>
   </property>
   <property>
     <name>dfs.namenode.rpc-address.mycluster.nn2</name>
-    <value>kogiwara-nn1002.grid.ssk.ynwm.yahoo.co.jp:8020</value>
+    <value>nn2-host:8020</value>
   </property>
 
   <property>
     <name>dfs.namenode.http-address.mycluster.nn1</name>
-    <value>kogiwara-nn1001.grid.ssk.ynwm.yahoo.co.jp:50070</value>
+    <value>nn1-host:50070</value>
   </property>
   <property>
     <name>dfs.namenode.http-address.mycluster.nn2</name>
-    <value>kogiwara-nn1002.grid.ssk.ynwm.yahoo.co.jp:50070</value>
+    <value>nn2-host:50070</value>
   </property>
 
   <property>
     <name>dfs.namenode.shared.edits.dir</name>
-    <value>qjournal://kogiwara-gs1001.grid.ssk.ynwm.yahoo.co.jp:8485;kogiwara-gs1002.grid.ssk.ynwm.yahoo.co.jp:8485;kogiwara-gs1003.grid.ssk.ynwm.yahoo.co.jp:8485/mycluster</value>
+    <value>qjournal://gs1-host:8485;gs2-host:8485;gs3-host:8485/mycluster</value>
   </property>
 
   <property>

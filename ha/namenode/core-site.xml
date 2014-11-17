@@ -25,7 +25,7 @@
 
   <property>
     <name>ha.zookeeper.quorum</name>
-    <value>kogiwara-zk1001.grid.ssk.ynwm.yahoo.co.jp:2181,kogiwara-zk1002.grid.ssk.ynwm.yahoo.co.jp:2181,kogiwara-zk1003.grid.ssk.ynwm.yahoo.co.jp:2181</value>
+    <value>zk-host1:2181,zk-host2:2181,zk-host3:2181</value>
   </property>
 
   <property>

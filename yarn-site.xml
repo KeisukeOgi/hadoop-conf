@@ -102,7 +102,7 @@
   </property>
   <property>
     <name>yarn.resourcemanager.zk.state-store.address</name>
-    <value>kogiwara-zk1001.grid.ssk.ynwm.yahoo.co.jp:2181,kogiwara-zk1002.grid.ssk.ynwm.yahoo.co.jp:2181,kogiwara-zk1003.grid.ssk.ynwm.yahoo.co.jp:2181</value>
+    <value>zk1-host:2181,zk2-host:2181,zk3-host:2181</value>
   </property>
 
   <property>
@@ -116,60 +116,60 @@
 
   <property>
     <name>yarn.resourcemanager.zk-address</name>
-    <value>kogiwara-zk1001.grid.ssk.ynwm.yahoo.co.jp:2181,kogiwara-zk1002.grid.ssk.ynwm.yahoo.co.jp:2181,kogiwara-zk1003.grid.ssk.ynwm.yahoo.co.jp:2181</value>
+    <value>zk1-host:2181,zk2-host:2181,zk3-host:2181</value>
     <description>For multiple zk services, separate them with comma</description>
   </property>
 
   <!-- RM1 configs -->
   <property>
     <name>yarn.resourcemanager.address.rm1</name>
-    <value>kogiwara-rm1001.grid.ssk.ynwm.yahoo.co.jp:23140</value>
+    <value>rm1-host:23140</value>
   </property>
   <property>
     <name>yarn.resourcemanager.scheduler.address.rm1</name>
-    <value>kogiwara-rm1001.grid.ssk.ynwm.yahoo.co.jp:23130</value>
+    <value>rm1-host:23130</value>
   </property>
   <property>
     <name>yarn.resourcemanager.webapp.https.address.rm1</name>
-    <value>kogiwara-rm1001.grid.ssk.ynwm.yahoo.co.jp:23189</value>
+    <value>rm1-host:23189</value>
   </property>
   <property>
     <name>yarn.resourcemanager.webapp.address.rm1</name>
-    <value>kogiwara-rm1001.grid.ssk.ynwm.yahoo.co.jp:23188</value>
+    <value>rm1-host:23188</value>
   </property>
   <property>
     <name>yarn.resourcemanager.resource-tracker.address.rm1</name>
-    <value>kogiwara-rm1001.grid.ssk.ynwm.yahoo.co.jp:23125</value>
+    <value>rm1-host:23125</value>
   </property>
   <property>
     <name>yarn.resourcemanager.admin.address.rm1</name>
-    <value>kogiwara-rm1001.grid.ssk.ynwm.yahoo.co.jp:23141</value>
+    <value>rm1-host:23141</value>
   </property>
 
   <!-- RM2 configs -->
   <property>
     <name>yarn.resourcemanager.address.rm2</name>
-    <value>kogiwara-rm1002.grid.ssk.ynwm.yahoo.co.jp:23140</value>
+    <value>rm2-host:23140</value>
   </property>
   <property>
     <name>yarn.resourcemanager.scheduler.address.rm2</name>
-    <value>kogiwara-rm1002.grid.ssk.ynwm.yahoo.co.jp:23130</value>
+    <value>rm2-host:23130</value>
   </property>
   <property>
     <name>yarn.resourcemanager.webapp.https.address.rm2</name>
-    <value>kogiwara-rm1002.grid.ssk.ynwm.yahoo.co.jp:23189</value>
+    <value>rm2-host:23189</value>
   </property>
   <property>
     <name>yarn.resourcemanager.webapp.address.rm2</name>
-    <value>kogiwara-rm1002.grid.ssk.ynwm.yahoo.co.jp:23188</value>
+    <value>rm2-host:23188</value>
   </property>
   <property>
     <name>yarn.resourcemanager.resource-tracker.address.rm2</name>
-    <value>kogiwara-rm1002.grid.ssk.ynwm.yahoo.co.jp:23125</value>
+    <value>rm2-host:23125</value>
   </property>
   <property>
     <name>yarn.resourcemanager.admin.address.rm2</name>
-    <value>kogiwara-rm1002.grid.ssk.ynwm.yahoo.co.jp:23141</value>
+    <value>rm2-host:23141</value>
   </property>
 
 <!-- Node Manager Configs -->
