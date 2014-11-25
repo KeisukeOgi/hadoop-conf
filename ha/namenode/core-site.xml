@@ -25,7 +25,7 @@
 
   <property>
     <name>ha.zookeeper.quorum</name>
-    <value>zk-host1:2181,zk-host2:2181,zk-host3:2181</value>
+    <value>zookeeper01:2181,zookeeper02:2181,zookeeper03:2181</value>
   </property>
 
   <property>

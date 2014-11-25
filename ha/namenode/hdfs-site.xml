@@ -39,7 +39,7 @@
   </property>
 
   <property>
-    <pname>dfs.datanode.fsdataset.volume.choosing.policy</name>
+    <name>dfs.datanode.fsdataset.volume.choosing.policy</name>
     <value>org.apache.hadoop.hdfs.server.datanode.fsdataset.AvailableSpaceVolumeChoosingPolicy</value>
   </property>
 
@@ -70,25 +70,25 @@
 
   <property>
     <name>dfs.namenode.rpc-address.mycluster.nn1</name>
-    <value>nn1-host:8020</value>
+    <value>namenode01:8020</value>
   </property>
   <property>
     <name>dfs.namenode.rpc-address.mycluster.nn2</name>
-    <value>nn2-host:8020</value>
+    <value>namenode02:8020</value>
   </property>
 
   <property>
     <name>dfs.namenode.http-address.mycluster.nn1</name>
-    <value>nn1-host:50070</value>
+    <value>namenode01:50070</value>
   </property>
   <property>
     <name>dfs.namenode.http-address.mycluster.nn2</name>
-    <value>nn2-host:50070</value>
+    <value>namenode02:50070</value>
   </property>
 
   <property>
     <name>dfs.namenode.shared.edits.dir</name>
-    <value>qjournal://gs1-host:8485;gs2-host:8485;gs3-host:8485/mycluster</value>
+    <value>qjournal://journalnode01:8485;journalnode02:8485;journalnode03:8485/mycluster</value>
   </property>
 
   <property>

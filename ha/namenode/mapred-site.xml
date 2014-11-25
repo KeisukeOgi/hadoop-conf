@@ -25,12 +25,12 @@
 
   <property>
     <name>mapreduce.jobhistory.address</name>
-    <value>kogiwara-rm1001.grid.ssk.ynwm.yahoo.co.jp:10020</value>
+    <value>jobhistory01:10020</value>
   </property>
 
   <property>
     <name>mapreduce.jobhistory.webapp.address</name>
-    <value>kogiwara-rm1001.grid.ssk.ynwm.yahoo.co.jp:19888</value>
+    <value>jobhistory01:19888</value>
   </property>
 
   <property>
