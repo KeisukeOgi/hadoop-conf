@@ -19,6 +19,11 @@
 
 <configuration>
   <property>
+    <name>yarn.resourcemanager.hostname</name>
+    <value>resourcemanager01</value>
+  </property>
+
+  <property>
     <description>Classpath for typical applications.</description>
     <name>yarn.application.classpath</name>
     <value>$HADOOP_CONF_DIR,
@@ -28,155 +33,102 @@
            $HADOOP_YARN_HOME/*,$HADOOP_YARN_HOME/lib/*
     </value>
   </property>
+
+  <property>
+    <name>yarn.nodemanager.aux-services</name>
+    <value>mapreduce_shuffle</value>
+  </property>
+
+  <property>
+    <name>yarn.nodemanager.local-dirs</name>
+    <value>file:///data/1/yarn/local,file:///data/2/yarn/local,file:///data/3/yarn/local,file:///data/4/yarn/local</value>
+  </property>
+
+  <property>
+    <name>yarn.nodemanager.log-dirs</name>
+    <value>file:///data/1/yarn/logs,file:///data/2/yarn/logs,file:///data/3/yarn/logs,file:///data/4/yarn/logs</value>
+  </property>
+
   <property>
     <name>yarn.log.aggregation-enable</name>
     <value>true</value>
   </property>
+
   <property>
     <description>Where to aggregate logs</description>
     <name>yarn.nodemanager.remote-app-log-dir</name>
     <value>hdfs://namenode01:8020/var/log/hadoop-yarn/apps</value>
   </property>
 
-<!-- Resource Manager Configs -->
+<!--  Timeline Server Configs -->
   <property>
-    <name>yarn.resourcemanager.hostname</name>
-    <value>resourcemanager01</value>
+    <description>The hostname of the Timeline service web application.</description>
+    <name>yarn.timeline-service.hostname</name>
+    <value>timeline-server</value>
   </property>
   <property>
-    <name>yarn.resourcemanager.connect.retry-interval.ms</name>
-    <value>2000</value>
+    <description>This is default address for the timeline server to start the RPC server.</description>
+    <name>yarn.timeline-service.address</name>
+    <value>${yarn.timeline-service.hostname}:10200</value>
   </property>
   <property>
-    <name>yarn.resourcemanager.ha.enabled</name>
+    <description>The http address of the timeline server web application.</description>
+    <name>yarn.timeline-service.webapp.address</name>
+    <value>${yarn.timeline-service.hostname}:8188</value>
+  </property>
+  <property>
+    <description>The https adddress of the timeline server web application.</description>
+    <name>yarn.timeline-service.webapp.https.address</name>
+    <value>${yarn.timeline-service.hostname}:8190</value>
+  </property>
+  <property>
+    <description>Handler thread count to serve the client RPC requests.</description>
+    <name>yarn.timeline-service.handler-thread-count</name>
+    <value>10</value>
+  </property>
+  <property>
+    <description>Enable or disable the GHS</description>
+    <name>yarn.timeline-service.generic-application-history.enabled</name>
     <value>true</value>
   </property>
   <property>
-    <name>yarn.resourcemanager.ha.automatic-failover.enabled</name>
+    <description>Store class name for history store, defaulting to file system store</description>
+    <name>yarn.timeline-service.generic-application-history.store-class</name>
+    <value>org.apache.hadoop.yarn.server.applicationhistoryservice.FileSystemApplicationHistoryStore</value>
+  </property>
+  <property>
+    <description>URI pointing to the location of the FileSystem path where the history will be persisted.</description>
+    <name>yarn.timeline-service.generic-application-history.fs-history-store.uri</name>
+    <value>/var/log/hadoop-yarn/system/history</value>
+  </property>
+  <property>
+    <description>T-file compression types used to compress history data.</description>
+    <name>yarn.timeline-service.generic-application-history.fs-history-store.compression-type</name>
+    <value>none</value>
+  </property>
+  <property>
+    <description>Enable or disable the Timeline Server.</description>
+    <name>yarn.timeline-service.enabled</name>
     <value>true</value>
   </property>
   <property>
-    <name>yarn.resourcemanager.ha.automatic-failover.embedded</name>
+    <description>Store class name for timeline store</description>
+    <name>yarn.timeline-service.store-class</name>
+    <value>org.apache.hadoop.yarn.server.timeline.LeveldbTimelineStore</value>
+  </property>
+  <property>
+    <description>Store file name for leveldb timeline store</description>
+    <name>yarn.timeline-service.leveldb-timeline-store.path</name>
+    <value>/var/log/hadoop-yarn/timeline</value>
+  </property>
+  <property>
+  <description>Enable age off of timeline store data.</description>
+    <name>yarn.timeline-service.ttl-enable</name>
     <value>true</value>
   </property>
   <property>
-    <name>yarn.resourcemanager.cluster-id</name>
-    <value>pseudo-yarn-rm-cluster</value>
-  </property>
-  <property>
-    <name>yarn.resourcemanager.ha.rm-ids</name>
-    <value>rm1,rm2</value>
-  </property>
-  <property>
-    <name>yarn.resourcemanager.scheduler.class</name>
-    <value>org.apache.hadoop.yarn.server.resourcemanager.scheduler.fair.FairScheduler</value>
-  </property>
-  <property>
-    <name>yarn.resourcemanager.recovery.enabled</name>
-    <value>true</value>
-  </property>
-  <property>
-    <name>yarn.resourcemanager.store.class</name>
-    <value>org.apache.hadoop.yarn.server.resourcemanager.recovery.ZKRMStateStore</value>
-  </property>
-  <property>
-    <name>yarn.resourcemanager.zk.state-store.address</name>
-    <value>zookeeper01:2181,zookeeper02:2181,zookeeper03:2181</value>
-  </property>
-  <property> 
-    <name>yarn.resourcemanager.zk-address</name>
-    <value>zookeeper01,zookeeper02,zookeeper03</value> 
-  </property>
-  <property>
-    <name>yarn.app.mapreduce.am.scheduler.connection.wait.interval-ms</name>
-    <value>5000</value>
-  </property>
-  <property>
-    <name>yarn.resourcemanager.work-preserving-recovery.enabled</name>
-    <value>true</value>
-  </property>
-
-  <!-- RM1 configs -->
-  <property>
-    <name>yarn.resourcemanager.address.rm1</name>
-    <value>resourcemanager01:23140</value>
-  </property>
-  <property>
-    <name>yarn.resourcemanager.scheduler.address.rm1</name>
-    <value>resourcemanager01:23130</value>
-  </property>
-  <property>
-    <name>yarn.resourcemanager.webapp.https.address.rm1</name>
-    <value>resourcemanager01:23189</value>
-  </property>
-  <property>
-    <name>yarn.resourcemanager.webapp.address.rm1</name>
-    <value>resourcemanager01:23188</value>
-  </property>
-  <property>
-    <name>yarn.resourcemanager.resource-tracker.address.rm1</name>
-    <value>resourcemanager01:23125</value>
-  </property>
-  <property>
-    <name>yarn.resourcemanager.admin.address.rm1</name>
-    <value>resourcemanager01:23141</value>
-  </property>
-
-  <!-- RM2 configs -->
-  <property>
-    <name>yarn.resourcemanager.address.rm2</name>
-    <value>resourcemanager02:23140</value>
-  </property>
-  <property>
-    <name>yarn.resourcemanager.scheduler.address.rm2</name>
-    <value>resourcemanager02:23130</value>
-  </property>
-  <property>
-    <name>yarn.resourcemanager.webapp.https.address.rm2</name>
-    <value>resourcemanager02:23189</value>
-  </property>
-  <property>
-    <name>yarn.resourcemanager.webapp.address.rm2</name>
-    <value>resourcemanager02:23188</value>
-  </property>
-  <property>
-    <name>yarn.resourcemanager.resource-tracker.address.rm2</name>
-    <value>resourcemanager02:23125</value>
-  </property>
-  <property>
-    <name>yarn.resourcemanager.admin.address.rm2</name>
-    <value>resourcemanager02:23141</value>
-  </property>
-
-<!-- Node Manager Configs -->
-  <property>
-    <description>Address where the localizer IPC is.</description>
-    <name>yarn.nodemanager.localizer.address</name>
-    <value>0.0.0.0:23344</value>
-  </property>
-  <property>
-    <description>NM Webapp address.</description>
-    <name>yarn.nodemanager.webapp.address</name>
-    <value>0.0.0.0:23999</value>
-  </property>
-  <property>
-    <name>yarn.nodemanager.aux-services</name>
-    <value>mapreduce_shuffle</value>
-  </property>
-  <property>
-    <name>yarn.nodemanager.local-dirs</name>
-    <value>file:///data/1/yarn/local,file:///data/2/yarn/local,file:///data/3/yarn/local,file:///data/4/yarn/local</value>
-  </property>
-  <property>
-    <name>yarn.nodemanager.local-dirs</name>
-    <value>file:///data/1/yarn/local,file:///data/2/yarn/local,file:///data/3/yarn/local,file:///data/4/yarn/local</value>
-  </property>
-  <property>
-    <name>mapreduce.shuffle.port</name>
-    <value>23080</value>
-  </property>
-  <property>
-    <name>yarn.resourcemanager.work-preserving-recovery.enabled</name>
-    <value>true</value>
+    <description>Time to live for timeline store data in milliseconds.</description>
+    <name>yarn.timeline-service.ttl-ms</name>
+    <value>604800000</value>
   </property>
 </configuration>
