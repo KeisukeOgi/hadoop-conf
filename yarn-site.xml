@@ -251,6 +251,17 @@
     <name>yarn.timeline-service.ttl-ms</name>
     <value>604800000</value>
   </property>
+<!-- timeline server security -->
+  <property>
+    <description>The Kerberos principal for the timeline server.</description>
+    <name>yarn.timeline-service.principal</name>
+    <value>yarn/_HOST@REALM</value>
+  </property>
+  <property>
+    <description>The Kerberos keytab for the timeline server.</description>
+    <name>yarn.timeline-service.keytab</name>
+    <value>/etc/hadoop/conf/yarn.keytab</value>
+  </property>
 
 <!-- ResourceManager security configs -->
   <property>
