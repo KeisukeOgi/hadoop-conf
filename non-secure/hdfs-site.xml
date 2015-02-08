@@ -1,0 +1,200 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<configuration>
+
+  <property>
+    <name>dfs.nameservices</name>
+    <value>mycluster</value>
+  </property>
+
+  <property>
+    <name>dfs.permissions.superusergroup</name>
+    <value>hadoop</value>
+  </property>
+
+  <property>
+    <name>dfs.namenode.name.dir</name>
+    <value>file:///data/1/dfs/nn,file:///data/2/dfs/nn</value>
+  </property>
+
+  <property>
+    <name>dfs.datanode.data.dir</name>
+    <value>file:///data/1/dfs/dn,file:///data/2/dfs/dn,file:///data/3/dfs/dn,file:///data/4/dfs/dn</value>
+  </property>
+
+  <property>
+    <name>dfs.datanode.fsdataset.volume.choosing.policy</name>
+    <value>org.apache.hadoop.hdfs.server.datanode.fsdataset.AvailableSpaceVolumeChoosingPolicy</value>
+  </property>
+
+  <property>
+    <name>dfs.datanode.available-space-volume-choosing-policy.balanced-space-threshold</name>
+    <value>10737418240</value>
+  </property>
+
+  <property>
+    <name>dfs.datanode.available-space-volume-choosing-policy.balanced-space-preference-fraction</name>
+    <value>0.75</value>
+  </property>
+
+  <property>
+    <name>dfs.webhdfs.enabled</name>
+    <value>true</value>
+  </property>
+
+  <property>
+    <name>dfs.webhdfs.user.provider.user.pattern</name>
+    <value>^[A-Za-z0-9_][A-Za-z0-9._-]*[$]?$</value>
+  </property>
+
+  <property>
+    <name>dfs.ha.namenodes.mycluster</name>
+    <value>nn1,nn2</value>
+  </property>
+
+  <property>
+    <name>dfs.namenode.rpc-address.mycluster.nn1</name>
+    <value>kogiwara-nn01.grid.ssk.ynwm.yahoo.co.jp:8020</value>
+  </property>
+  <property>
+    <name>dfs.namenode.rpc-address.mycluster.nn2</name>
+    <value>kogiwara-nn02.grid.ssk.ynwm.yahoo.co.jp:8020</value>
+  </property>
+
+  <property>
+    <name>dfs.namenode.http-address.mycluster.nn1</name>
+    <value>kogiwara-nn01.grid.ssk.ynwm.yahoo.co.jp:50070</value>
+  </property>
+  <property>
+    <name>dfs.namenode.http-address.mycluster.nn2</name>
+    <value>kogiwara-nn02.grid.ssk.ynwm.yahoo.co.jp:50070</value>
+  </property>
+
+  <property>
+    <name>dfs.namenode.shared.edits.dir</name>
+    <value>qjournal://kogiwara-jn01.grid.ssk.ynwm.yahoo.co.jp:8485;kogiwara-jn02.grid.ssk.ynwm.yahoo.co.jp:8485;kogiwara-jn03.grid.ssk.ynwm.yahoo.co.jp:8485/mycluster</value>
+  </property>
+
+  <property>
+    <name>dfs.journalnode.edits.dir</name>
+    <value>/data/1/dfs/jn</value>
+  </property>
+
+ ￼<property>
+    <name>dfs.client.failover.proxy.provider.mycluster</name>
+    <value>org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider</value>
+  </property>
+
+  <property>
+    <name>dfs.ha.fencing.methods</name>
+    <value>sshfence(hdfs:22)</value>
+  </property>
+  <property>
+    <name>dfs.ha.fencing.ssh.private-key-files</name>
+    <value>/home/hdfs/.ssh/id_rsa</value>
+  </property>
+  <property>
+    <name>dfs.ha.fencing.ssh.connect-timeout</name>
+    <value>30000</value>
+    <description>SSH connection timeout, in milliseconds, to use with the builtin sshfence fencer.</description>
+  </property>
+
+  <property>
+    <name>dfs.ha.automatic-failover.enabled</name>
+    <value>false</value>
+  </property>
+
+<!-- General HDFS security config -->
+  <property>
+    <name>dfs.block.access.token.enable</name>
+    <value>true</value>
+  </property>
+
+<!-- NameNode security config -->
+  <property>
+    <name>dfs.namenode.keytab.file</name>
+    <value>/usr/local/hadoop/etc/hadoop/hdfs.keytab</value> <!-- path to the HDFS keytab -->
+  </property>
+
+  <property>
+    <name>dfs.namenode.kerberos.principal</name>
+    <value>hdfs/_HOST@YAHOO.CO.JP</value>
+  </property>
+
+  <property>
+    <name>dfs.namenode.kerberos.internal.spnego.principal</name>
+    <value>HTTP/_HOST@YAHOO.CO.JP</value>
+  </property>
+
+  <!-- DataNode security config -->
+  <property>
+    <name>dfs.datanode.data.dir.perm</name>
+    <value>700</value>
+  </property>
+  <property>
+    <name>dfs.datanode.address</name>
+    <value>0.0.0.0:1004</value>
+  </property>
+  <property>
+    <name>dfs.datanode.http.address</name>
+    <value>0.0.0.0:1006</value>
+  </property>
+  <property>
+    <name>dfs.datanode.keytab.file</name>
+    <value>/usr/local/hadoop/etc/hadoop/hdfs.keytab</value> <!-- path to the HDFS keytab -->
+  </property>
+  <property>
+    <name>dfs.datanode.kerberos.principal</name>
+    <value>hdfs/_HOST@YAHOO.CO.JP</value>
+  </property>
+  <!-- Web Authentication config -->
+  <property>
+    <name>dfs.journalnode.keytab.file</name>
+    <value>/usr/local/hadoop/etc/hadoop/hdfs.keytab</value> <!-- path to the HDFS keytab -->
+  </property>
+  <property>
+    <name>dfs.journalnode.kerberos.principal</name>
+    <value>hdfs/_HOST@YAHOO.CO.JP</value>
+  </property>
+  <property>
+    <name>dfs.journalnode.kerberos.internal.spnego.principal</name>
+    <value>HTTP/_HOST@YAHOO.CO.JP</value>
+  </property> 
+
+  <property>
+    <name>dfs.web.authentication.kerberos.principal</name>
+    <value>HTTP/_HOST@YAHOO.CO.JP</value>
+  </property>
+<!--  <property>
+    <name>dfs.web.authentication.kerberos.keytab</name>
+    <value>/etc/hadoop/conf/hdfs.keytab</value>
+  </property>
+  -->
+
+  <property>
+    <name>dfs.nfs.keytab.file</name>
+    <value>/usr/local/hadoop/etc/hadoop/hdfs.keytab</value> <!-- path to the HDFS or NFS gateway keytab -->
+  </property>
+  <property>
+    <name>dfs.nfs.kerberos.principal</name>
+    <value>hdfs/_HOST@YAHOO.CO.JP</value>
+  </property>
+
+</configuration>
