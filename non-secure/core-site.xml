@@ -1,36 +1,41 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
 <!--
-  Licensed to the Apache Software Foundation (ASF) under one or more
-  contributor license agreements.  See the NOTICE file distributed with
-  this work for additional information regarding copyright ownership.
-  The ASF licenses this file to You under the Apache License, Version 2.0
-  (the "License"); you may not use this file except in compliance with
-  the License.  You may obtain a copy of the License at
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
 
-      http://www.apache.org/licenses/LICENSE-2.0
+    http://www.apache.org/licenses/LICENSE-2.0
 
   Unless required by applicable law or agreed to in writing, software
   distributed under the License is distributed on an "AS IS" BASIS,
   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   See the License for the specific language governing permissions and
-  limitations under the License.
+  limitations under the License. See accompanying LICENSE file.
 -->
-<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<!-- Put site-specific property overrides in this file. -->
 
 <configuration>
+
   <property>
     <name>fs.defaultFS</name>
-    <value>hdfs://mycluster</value>
+    <value>hdfs://nn01:8020</value>
   </property>
 
   <property>
-    <name>ha.zookeeper.quorum</name>
-    <value>kogiwara-zk01.grid.ssk.ynwm.yahoo.co.jp:2181,kogiwara-zk02.grid.ssk.ynwm.yahoo.co.jp:2181,kogiwara-zk003.grid.ssk.ynwm.yahoo.co.jp:2181</value>
+    <name>fs.trash.interval</name>
+    <value>120</value>
+  </property>
+
+  <property>
+    <name>fs.trash.checkpoint.interval</name>
+    <value>120</value>
   </property>
 
   <property>
     <name>io.compression.codecs</name>
-    <value>org.apache.hadoop.io.compress.DefaultCodec,org.apache.hadoop.io.compress.GzipCodec, org.apache.hadoop.io.compress.BZip2Codec,com.hadoop.compression.lzo.LzoCodec, com.hadoop.compression.lzo.LzopCodec,org.apache.hadoop.io.compress.SnappyCodec</value>
+    <value>org.apache.hadoop.io.compress.DefaultCodec,org.apache.hadoop.io.compress.GzipCodec,org.apache.hadoop.io.compress.BZip2Codec,com.hadoop.compression.lzo.LzoCodec,com.hadoop.compression.lzo.LzopCodec,org.apache.hadoop.io.compress.SnappyCodec</value>
   </property>
 
   <property>
@@ -43,43 +48,4 @@
     <value>*</value>
   </property>
 
-  <property>
-    <name>hadoop.security.authentication</name>
-    <value>kerberos</value> <!-- A value of "simple" would disable security. -->
-  </property>
-  
-  <property>
-    <name>hadoop.http.authentication.type</name>
-    <value>simple</value> <!-- A value of "simple" would disable security. -->
-  </property>
-
-  <property>
-    <name>hadoop.security.authorization</name>
-    <value>true</value>
-  </property>
-
-  <property>
-    <name>hadoop.rpc.protection</name>
-    <value>privacy</value>
-  </property>
-
-  <property>
-    <name>dfs.encrypt.data.transfer</name>
-    <value>true</value>
-  </property>
-
-  <property>
-    <name>hadoop.http.filter.initializers</name>
-    <value>org.apache.hadoop.security.AuthenticationFilterInitializer</value>
-  </property>
-
-  <property>
-    <name>hadoop.http.authentication.kerberos.principal</name>
-    <value>HTTP/_HOST@YAHOO.CO.JP</value>
-  </property>
-
-  <property>
-    <name>hadoop.http.authentication.kerberos.keytab</name>
-    <value>/usr/local/hadoop/etc/hadoop/yarn.keytab</value>
-  </property>
 </configuration>
